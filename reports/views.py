@@ -11,5 +11,5 @@ from .models import Report
 def reports(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        result = Report.objects.create(data=data)
+        result = Report.objects.create(data=json.dumps(data))
         return JsonResponse({'message': 'POST - hello django server', 'data': model_to_dict(result)})
