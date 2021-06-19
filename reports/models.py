@@ -2,4 +2,4 @@ from django.db import models
 
 
 class Report(models.Model):
-    data = models.TextField(max_length=200)
+    data = models.JSONField(max_length=200)
