@@ -1,7 +1,7 @@
 from typing import List
 
 from reports.entities import Report
-from reports.repositories.repositories import ReportDatabaseRepo
+from reports.repositories import ReportDatabaseRepo
 
 
 class ReportRepo:

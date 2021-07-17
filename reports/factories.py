@@ -1,5 +1,5 @@
-from reports.repositories.repositories import ReportDatabaseRepo
-from reports.repositories.unit import ReportRepo
+from reports.repositories import ReportDatabaseRepo
+from reports.repositories import ReportRepo
 from reports.interactors import CreateReportInteractor, GetRecentlyReportsInteractor
 from reports.views import ReportsView
 

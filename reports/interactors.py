@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import List
 
 from .entities import Report
-from .repositories.unit import ReportRepo
+from .repositories import ReportRepo
 
 
 class GetRecentlyReportsInteractor:
