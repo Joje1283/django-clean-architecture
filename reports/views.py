@@ -27,7 +27,7 @@ class ReportsView(ViewInterface):
         self.create_new_report_interactor: CreateReportInteractor = create_new_report_interactor
 
     def get(self) -> Tuple[list, int]:
-        reports: List = self.get_recently_report_interactor.set_params().execute()
+        reports: List[Report] = self.get_recently_report_interactor.set_params().execute()
         body: List[Dict[str, str]] = MultipleReportsSerializer.serializer(reports)
         status: int = 200
         return body, status

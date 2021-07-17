@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import List
 
 from .entities import Report
 from .repositories.unit import ReportRepo
@@ -11,7 +12,7 @@ class GetRecentlyReportsInteractor:
     def set_params(self) -> GetRecentlyReportsInteractor:
         return self
 
-    def execute(self) -> list:
+    def execute(self) -> List[Report]:
         return self.report_repo.get_recently_reports()
 
 

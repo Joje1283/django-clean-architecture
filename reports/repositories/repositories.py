@@ -1,10 +1,12 @@
+from typing import List
+
 from reports.models import Report as ORMReport
 from reports.entities import Report
 
 
 class ReportDatabaseRepo:
     @classmethod
-    def get_recently_reports(cls) -> list:
+    def get_recently_reports(cls) -> List[Report]:
         orm_reports = ORMReport.objects.order_by('-pk')[:10]
         reports = []
         for orm_report in orm_reports:

@@ -1,3 +1,5 @@
+from typing import List
+
 from reports.entities import Report
 from reports.repositories.repositories import ReportDatabaseRepo
 
@@ -7,7 +9,7 @@ class ReportRepo:
         self.db_repo: ReportDatabaseRepo = db_repo
         self.cache_repo = cache_repo
 
-    def get_recently_reports(self) -> list:
+    def get_recently_reports(self) -> List[Report]:
         return self.db_repo.get_recently_reports()
 
     def create_report(self, report: Report) -> Report:
