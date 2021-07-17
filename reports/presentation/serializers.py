@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-from .entities import Report
+from ..domain.entities import Report
 
 
 class MultipleReportsSerializer:

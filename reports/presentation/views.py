@@ -1,9 +1,9 @@
 from abc import abstractmethod, ABC
 from typing import Tuple, List, Dict, Union
 
-from .interactors import GetRecentlyReportsInteractor, CreateReportInteractor
-from .entities import Report
-from .serializers import MultipleReportsSerializer, ReportSerializer
+from ..domain.interactors import GetRecentlyReportsInteractor, CreateReportInteractor
+from ..domain.entities import Report
+from ..presentation.serializers import MultipleReportsSerializer, ReportSerializer
 
 
 class ViewInterface(ABC):

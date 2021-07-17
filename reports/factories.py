@@ -1,7 +1,7 @@
 from .repositories import ReportDatabaseRepo
 from .repositories import ReportRepo
-from .interactors import CreateReportInteractor, GetRecentlyReportsInteractor
-from .views import ReportsView
+from .domain.interactors import CreateReportInteractor, GetRecentlyReportsInteractor
+from .presentation.views import ReportsView
 
 
 def create_report_database_repo() -> ReportDatabaseRepo:

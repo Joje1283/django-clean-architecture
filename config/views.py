@@ -1,12 +1,12 @@
 import json
-from typing import Union, Type
+from typing import Type
 
 from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from reports.views import ViewInterface
+from reports.presentation.views import ViewInterface
 
 
 @method_decorator(csrf_exempt, name='dispatch')

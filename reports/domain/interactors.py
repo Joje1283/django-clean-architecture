@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import List
 
-from .entities import Report
-from .repositories import ReportRepo
+from ..domain.entities import Report
+from ..repositories import ReportRepo
 
 
 class GetRecentlyReportsInteractor:

@@ -1,6 +1,6 @@
 from typing import List
 
-from ..entities import Report
+from ..domain.entities import Report
 from ..repositories import ReportDatabaseRepo
 
 
