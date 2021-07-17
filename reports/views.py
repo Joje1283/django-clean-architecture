@@ -1,8 +1,8 @@
 from abc import abstractmethod, ABC
 from typing import Tuple, List, Dict, Union
 
-from reports.interactors import GetRecentlyReportsInteractor, CreateReportInteractor
-from reports.entities import Report
+from .interactors import GetRecentlyReportsInteractor, CreateReportInteractor
+from .entities import Report
 from .serializers import MultipleReportsSerializer, ReportSerializer
 
 

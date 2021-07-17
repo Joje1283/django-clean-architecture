@@ -1,5 +1,6 @@
-from reports.entities import Report
 from typing import List, Dict
+
+from .entities import Report
 
 
 class MultipleReportsSerializer:

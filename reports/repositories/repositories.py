@@ -1,7 +1,7 @@
 from typing import List
 
-from reports.models import Report as ORMReport
-from reports.entities import Report
+from ..models import Report as ORMReport
+from ..entities import Report
 
 
 class ReportDatabaseRepo:
