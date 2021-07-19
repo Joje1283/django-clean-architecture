@@ -1,10 +1,18 @@
 from typing import List
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
 from ..domain.entities import Report
+from ..domain.interactors import ReportDataAccess
 from ..repositories import ReportDatabaseRepo
 
 
-class ReportRepo:
+@dataclass
+class ReportDataAccessInputData:
+    data: str
+
+
+class ReportRepo(ReportDataAccess):  # Data Access -> Database
     def __init__(self, db_repo: ReportDatabaseRepo, cache_repo=None):
         self.db_repo: ReportDatabaseRepo = db_repo
         self.cache_repo = cache_repo

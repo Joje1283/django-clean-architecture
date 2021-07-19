@@ -1,13 +1,24 @@
 from __future__ import annotations
-from typing import List
+from typing import List, Dict
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
 from ..domain.entities import Report
-from ..repositories import ReportRepo
+
+
+class ReportDataAccess(ABC):
+    @abstractmethod
+    def get_recently_reports(self) -> List[Report]:
+        pass
+
+    @abstractmethod
+    def create_report(self, report: Report) -> Report:
+        pass
 
 
 class GetRecentlyReportsInteractor:
-    def __init__(self, report_repo: ReportRepo):
-        self.report_repo: ReportRepo = report_repo
+    def __init__(self, report_repo: ReportDataAccess):
+        self.report_repo: ReportDataAccess = report_repo
 
     def set_params(self) -> GetRecentlyReportsInteractor:
         return self
@@ -16,16 +27,44 @@ class GetRecentlyReportsInteractor:
         return self.report_repo.get_recently_reports()
 
 
-class CreateReportInteractor:
-    def __init__(self, report_repo: ReportRepo):
-        self.report_repo: ReportRepo = report_repo
+@dataclass
+class ReportInputData:
+    data: str
 
-    def set_params(self, data: str) -> CreateReportInteractor:
-        self.data: str = data
+
+@dataclass
+class ReportOutputData:
+    id: int
+    data: str
+
+
+class ReportInputBoundary(ABC):
+    @abstractmethod
+    def set_params(self, report_input_data: ReportInputData) -> ReportInputBoundary:
+        pass
+
+    def execute(self) -> ReportOutputData:
+        pass
+
+
+class ReportOutputBoundary(ABC):
+    @abstractmethod
+    def serializer(self, report: ReportOutputData) -> Dict[str, str]:
+        pass
+
+
+class CreateReportInteractor(ReportInputBoundary):
+    def __init__(self, report_repo: ReportDataAccess):
+        self.report_repo: ReportDataAccess = report_repo
+
+    def set_params(self, report_input_data: ReportInputData) -> ReportInputBoundary:
+        self.report_input_data: ReportInputData = report_input_data
         return self
 
-    def execute(self) -> Report:
-        report = Report(data=self.data)
+    def execute(self) -> ReportOutputData:
+        report: Report = Report(data=self.report_input_data.data)
         # permission check
         # validation check
-        return self.report_repo.create_report(report)
+        report_ds_data: Report = self.report_repo.create_report(report)
+
+        return ReportOutputData(id=report_ds_data.id, data=report_ds_data.data)

@@ -1,6 +1,7 @@
 from typing import List, Dict
 
 from ..domain.entities import Report
+from ..domain.interactors import ReportOutputData, ReportOutputBoundary
 
 
 class MultipleReportsSerializer:
@@ -11,7 +12,15 @@ class MultipleReportsSerializer:
 
 class ReportSerializer:
     @staticmethod
-    def serializer(report: Report) -> Dict[str, str]:
+    def serializer(report: ReportOutputData) -> Dict[str, str]:
+        return {
+            'id': str(report.id),
+            'data': report.data
+        }
+
+
+class ReportPresenter(ReportOutputBoundary):
+    def serializer(self, report: ReportOutputData) -> Dict[str, str]:
         return {
             'id': str(report.id),
             'data': report.data
