@@ -2,7 +2,8 @@ from .presentation.serializers import ReportPresenter
 from .repositories import ReportDatabaseRepo
 from .repositories import ReportRepo
 from reports.domain.usecases.create_report import CreateReportInteractor, ReportOutputBoundary, \
-    ReportInputBoundary, ReportDataAccess
+    ReportInputBoundary
+from reports.domain.interfaces.repository import ReportDataAccess
 from reports.domain.usecases.get_recently_reports import GetRecentlyReportsInteractor
 from .presentation.views import ReportsView, ViewInterface
 

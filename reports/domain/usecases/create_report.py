@@ -6,16 +6,6 @@ from dataclasses import dataclass
 from reports.domain.entities import Report
 
 
-class ReportDataAccess(ABC):
-    @abstractmethod
-    def get_recently_reports(self) -> List[Report]:
-        pass
-
-    @abstractmethod
-    def create_report(self, report: Report) -> Report:
-        pass
-
-
 @dataclass
 class ReportInputData:
     data: str

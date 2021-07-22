@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import List
 
 from ..entities import Report
-from .create_report import ReportDataAccess
+from reports.domain.interfaces.repository import ReportDataAccess
 
 
 class GetRecentlyReportsInteractor:

@@ -2,7 +2,7 @@ from typing import List
 from dataclasses import dataclass
 
 from ..domain.entities import Report
-from reports.domain.usecases.create_report import ReportDataAccess
+from reports.domain.interfaces.repository import ReportDataAccess
 from ..repositories import ReportDatabaseRepo
 
 
