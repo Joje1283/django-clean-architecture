@@ -3,7 +3,7 @@ from typing import List, Dict
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-from ..domain.entities import Report
+from reports.domain.entities import Report
 
 
 class ReportDataAccess(ABC):
@@ -14,17 +14,6 @@ class ReportDataAccess(ABC):
     @abstractmethod
     def create_report(self, report: Report) -> Report:
         pass
-
-
-class GetRecentlyReportsInteractor:
-    def __init__(self, report_repo: ReportDataAccess):
-        self.report_repo: ReportDataAccess = report_repo
-
-    def set_params(self) -> GetRecentlyReportsInteractor:
-        return self
-
-    def execute(self) -> List[Report]:
-        return self.report_repo.get_recently_reports()
 
 
 @dataclass

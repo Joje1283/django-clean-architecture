@@ -1,7 +1,6 @@
 from typing import List, Dict
 
-from ..domain.entities import Report
-from ..domain.interactors import ReportOutputData, ReportOutputBoundary
+from reports.domain.usecases.create_report import ReportOutputData, ReportOutputBoundary
 
 
 class MultipleReportsSerializer:

@@ -1,9 +1,8 @@
 from typing import List
-from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 from ..domain.entities import Report
-from ..domain.interactors import ReportDataAccess
+from reports.domain.usecases.create_report import ReportDataAccess
 from ..repositories import ReportDatabaseRepo
 
 
