@@ -1,8 +1,8 @@
 from abc import abstractmethod, ABC
 from typing import Tuple, List, Dict, Union
 
-from reports.domain.usecases.create_report import  CreateReportInputBoundary, ReportOutputData, ReportInputData, ReportOutputBoundary
-from reports.domain.usecases.get_recently_reports import GetRecentlyReportsInteractor
+from reports.domain.usecases.create_report import CreateReportInputBoundary, ReportOutputData, ReportInputData, ReportOutputBoundary
+from reports.domain.usecases.get_recently_reports import GetReportsInputBoundary
 from reports.domain.entities import Report
 from reports.presentation.serializers import MultipleReportsSerializer
 
@@ -21,11 +21,11 @@ class ViewInterface(ABC):
 
 
 class ReportsView(ViewInterface):
-    def __init__(self, get_recently_report_interactor: GetRecentlyReportsInteractor = None,
+    def __init__(self, get_recently_report_interactor: GetReportsInputBoundary = None,
                  create_new_report_interactor: CreateReportInputBoundary = None,
                  create_report_presenter: ReportOutputBoundary = None):
         super().__init__()
-        self.get_recently_report_interactor: GetRecentlyReportsInteractor = get_recently_report_interactor
+        self.get_recently_report_interactor: GetReportsInputBoundary = get_recently_report_interactor
         self.create_new_report_interactor: CreateReportInputBoundary = create_new_report_interactor
         self.create_report_presenter: ReportOutputBoundary = create_report_presenter
 

@@ -19,7 +19,7 @@ class GetRecentlyReportsInteractor(GetReportsInputBoundary):
     def __init__(self, report_repo: ReportDataAccess):
         self.report_repo: ReportDataAccess = report_repo
 
-    def set_params(self) -> GetRecentlyReportsInteractor:
+    def set_params(self) -> GetReportsInputBoundary:
         return self
 
     def execute(self) -> List[Report]:
