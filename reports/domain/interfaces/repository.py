@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from ..entities import Report
+from reports.domain.entities import Report
 
 
 class ReportDataAccess(ABC):

@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 from reports.domain.entities import Report
+from reports.domain.interfaces.repository import ReportDataAccess
 
 
 @dataclass

@@ -1,6 +1,6 @@
 from typing import List
 
-from ..models import Report as ORMReport
+from reports.models import Report as ORMReport
 from reports.domain.entities import Report
 
 
