@@ -1,21 +1,12 @@
 from typing import List, Dict
 
 from reports.domain.usecases.create_report import ReportOutputData, ReportOutputBoundary
+from reports.domain.usecases.get_recently_reports import MultipleReportOutputBoundary
 
 
-class MultipleReportsSerializer:
-    @staticmethod
-    def serializer(reports: List) -> List[Dict[str, str]]:
-        return [ReportSerializer.serializer(report) for report in reports]
-
-
-class ReportSerializer:
-    @staticmethod
-    def serializer(report: ReportOutputData) -> Dict[str, str]:
-        return {
-            'id': str(report.id),
-            'data': report.data
-        }
+class MultipleReportsPresenter(MultipleReportOutputBoundary):
+    def serializer(self, reports: List[ReportOutputData]) -> List[Dict[str, str]]:
+        return [{'id': str(report.id), 'data': report.data} for report in reports]
 
 
 class ReportPresenter(ReportOutputBoundary):

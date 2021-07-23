@@ -1,10 +1,12 @@
 from abc import abstractmethod, ABC
 from typing import Tuple, List, Dict, Union
 
-from reports.domain.usecases.create_report import CreateReportInputBoundary, ReportOutputData, ReportInputData, ReportOutputBoundary
+from reports.domain.usecases.create_report import CreateReportInputBoundary
+from reports.domain.usecases.create_report import ReportOutputData
+from reports.domain.usecases.create_report import ReportInputData
+from reports.domain.usecases.create_report import ReportOutputBoundary
+from reports.domain.usecases.get_recently_reports import MultipleReportOutputBoundary
 from reports.domain.usecases.get_recently_reports import GetReportsInputBoundary
-from reports.domain.entities import Report
-from reports.presentation.serializers import MultipleReportsSerializer
 
 
 class ViewInterface(ABC):
@@ -23,15 +25,17 @@ class ViewInterface(ABC):
 class ReportsView(ViewInterface):
     def __init__(self, get_recently_report_interactor: GetReportsInputBoundary = None,
                  create_new_report_interactor: CreateReportInputBoundary = None,
-                 create_report_presenter: ReportOutputBoundary = None):
+                 create_report_presenter: ReportOutputBoundary = None,
+                 create_multiple_report_presenter: MultipleReportOutputBoundary = None):
         super().__init__()
         self.get_recently_report_interactor: GetReportsInputBoundary = get_recently_report_interactor
         self.create_new_report_interactor: CreateReportInputBoundary = create_new_report_interactor
         self.create_report_presenter: ReportOutputBoundary = create_report_presenter
+        self.create_multiple_report_presenter: MultipleReportOutputBoundary = create_multiple_report_presenter
 
     def get(self) -> Tuple[list, int]:
-        reports: List[Report] = self.get_recently_report_interactor.set_params().execute()
-        body: List[Dict[str, str]] = MultipleReportsSerializer.serializer(reports)
+        reports: List[ReportOutputData] = self.get_recently_report_interactor.set_params().execute()
+        body: List[Dict[str, str]] = self.create_multiple_report_presenter.serializer(reports=reports)
         status: int = 200
         return body, status
 
