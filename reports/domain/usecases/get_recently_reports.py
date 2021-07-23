@@ -5,6 +5,7 @@ from abc import ABC, abstractmethod
 from reports.domain.entities import Report
 from reports.domain.usecases.create_report import ReportOutputData
 from reports.domain.interfaces.repository import ReportDataAccess
+from reports.domain.interfaces.repository import ReportDataAccessOutputData
 
 
 class GetReportsInputBoundary(ABC):
@@ -30,8 +31,11 @@ class GetRecentlyReportsInteractor(GetReportsInputBoundary):
         return self
 
     def execute(self) -> List[ReportOutputData]:
-        reports: List[Report] = self.report_repo.get_recently_reports()
+        report_output_datas: List[ReportDataAccessOutputData] = self.report_repo.get_recently_reports()
         result: List[ReportOutputData] = []
-        for report in reports:
+        for output_data in report_output_datas:
+            report: Report = Report(id=output_data.id, data=output_data.data)
+            # check the validation by method of report's entity
+            # ...
             result.append(ReportOutputData(id=report.id, data=report.data))
         return result

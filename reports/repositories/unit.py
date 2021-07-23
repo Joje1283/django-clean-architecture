@@ -1,14 +1,10 @@
 from typing import List
-from dataclasses import dataclass
 
-from ..domain.entities import Report
 from reports.domain.interfaces.repository import ReportDataAccess
-from ..repositories import ReportDatabaseRepo
+from reports.domain.interfaces.repository import ReportDataAccessInputData
+from reports.domain.interfaces.repository import ReportDataAccessOutputData
 
-
-@dataclass
-class ReportDataAccessInputData:
-    data: str
+from reports.repositories import ReportDatabaseRepo
 
 
 class ReportRepo(ReportDataAccess):  # Data Access -> Database
@@ -16,8 +12,8 @@ class ReportRepo(ReportDataAccess):  # Data Access -> Database
         self.db_repo: ReportDatabaseRepo = db_repo
         self.cache_repo = cache_repo
 
-    def get_recently_reports(self) -> List[Report]:
+    def get_recently_reports(self) -> List[ReportDataAccessOutputData]:
         return self.db_repo.get_recently_reports()
 
-    def create_report(self, report: Report) -> Report:
+    def create_report(self, report: ReportDataAccessInputData) -> ReportDataAccessOutputData:
         return self.db_repo.create_report(report)
