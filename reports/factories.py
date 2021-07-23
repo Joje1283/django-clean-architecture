@@ -2,7 +2,7 @@ from reports.presentation.serializers import ReportPresenter
 from reports.repositories import ReportDatabaseRepo
 from reports.repositories import ReportRepo
 from reports.domain.usecases.create_report import CreateReportInteractor, ReportOutputBoundary, \
-    ReportInputBoundary
+    CreateReportInputBoundary
 from reports.domain.interfaces.repository import ReportDataAccess
 from reports.domain.usecases.get_recently_reports import GetRecentlyReportsInteractor
 from reports.presentation.views import ReportsView, ViewInterface
@@ -16,7 +16,7 @@ def create_report_repo() -> ReportDataAccess:
     return ReportRepo(db_repo=create_report_database_repo())
 
 
-def create_create_new_report_interactor() -> ReportInputBoundary:
+def create_create_new_report_interactor() -> CreateReportInputBoundary:
     return CreateReportInteractor(report_repo=create_report_repo())
 
 

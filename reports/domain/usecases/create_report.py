@@ -18,9 +18,9 @@ class ReportOutputData:
     data: str
 
 
-class ReportInputBoundary(ABC):
+class CreateReportInputBoundary(ABC):
     @abstractmethod
-    def set_params(self, report_input_data: ReportInputData) -> ReportInputBoundary:
+    def set_params(self, report_input_data: ReportInputData) -> CreateReportInputBoundary:
         pass
 
     def execute(self) -> ReportOutputData:
@@ -33,11 +33,11 @@ class ReportOutputBoundary(ABC):
         pass
 
 
-class CreateReportInteractor(ReportInputBoundary):
+class CreateReportInteractor(CreateReportInputBoundary):
     def __init__(self, report_repo: ReportDataAccess):
         self.report_repo: ReportDataAccess = report_repo
 
-    def set_params(self, report_input_data: ReportInputData) -> ReportInputBoundary:
+    def set_params(self, report_input_data: ReportInputData) -> CreateReportInputBoundary:
         self.report_input_data: ReportInputData = report_input_data
         return self
 
