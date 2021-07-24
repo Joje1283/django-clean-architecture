@@ -1,10 +1,10 @@
 from typing import List
 
-from reports.domain.interfaces.repository import ReportDataAccess
-from reports.domain.interfaces.repository import ReportDataAccessInputData
-from reports.domain.interfaces.repository import ReportDataAccessOutputData
+from reports.domainlayer.interfaces.repository import ReportDataAccess
+from reports.domainlayer.interfaces.repository import ReportDataAccessInputData
+from reports.domainlayer.interfaces.repository import ReportDataAccessOutputData
 
-from reports.repositories import ReportDatabaseRepo
+from reports.datalayer import ReportDatabaseRepo
 
 
 class ReportRepo(ReportDataAccess):  # Data Access -> Database

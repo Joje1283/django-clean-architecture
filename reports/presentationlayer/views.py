@@ -1,12 +1,12 @@
 from abc import abstractmethod, ABC
 from typing import Tuple, List, Dict, Union
 
-from reports.domain.usecases.create_report import CreateReportInputBoundary
-from reports.domain.usecases.create_report import ReportOutputData
-from reports.domain.usecases.create_report import ReportInputData
-from reports.domain.usecases.create_report import ReportOutputBoundary
-from reports.domain.usecases.get_recently_reports import MultipleReportOutputBoundary
-from reports.domain.usecases.get_recently_reports import GetReportsInputBoundary
+from reports.domainlayer.usecases.create_report import CreateReportInputBoundary
+from reports.domainlayer.usecases.create_report import ReportOutputData
+from reports.domainlayer.usecases.create_report import ReportInputData
+from reports.domainlayer.usecases.create_report import ReportOutputBoundary
+from reports.domainlayer.usecases.get_recently_reports import MultipleReportOutputBoundary
+from reports.domainlayer.usecases.get_recently_reports import GetReportsInputBoundary
 
 
 class ViewInterface(ABC):

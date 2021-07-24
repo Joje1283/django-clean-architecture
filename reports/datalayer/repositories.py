@@ -1,9 +1,9 @@
 from typing import List
 
 from reports.models import Report as ORMReport
-from reports.domain.entities import Report
-from reports.domain.interfaces.repository import ReportDataAccessInputData
-from reports.domain.interfaces.repository import ReportDataAccessOutputData
+from reports.domainlayer.entities import Report
+from reports.domainlayer.interfaces.repository import ReportDataAccessInputData
+from reports.domainlayer.interfaces.repository import ReportDataAccessOutputData
 
 
 class ReportDatabaseRepo:

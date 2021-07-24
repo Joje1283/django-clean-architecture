@@ -2,10 +2,10 @@ from __future__ import annotations
 from typing import List, Dict
 from abc import ABC, abstractmethod
 
-from reports.domain.entities import Report
-from reports.domain.usecases.create_report import ReportOutputData
-from reports.domain.interfaces.repository import ReportDataAccess
-from reports.domain.interfaces.repository import ReportDataAccessOutputData
+from reports.domainlayer.entities import Report
+from reports.domainlayer.usecases.create_report import ReportOutputData
+from reports.domainlayer.interfaces.repository import ReportDataAccess
+from reports.domainlayer.interfaces.repository import ReportDataAccessOutputData
 
 
 class GetReportsInputBoundary(ABC):

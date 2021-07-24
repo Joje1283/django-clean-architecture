@@ -1,7 +1,7 @@
 from typing import List, Dict
 
-from reports.domain.usecases.create_report import ReportOutputData, ReportOutputBoundary
-from reports.domain.usecases.get_recently_reports import MultipleReportOutputBoundary
+from reports.domainlayer.usecases.create_report import ReportOutputData, ReportOutputBoundary
+from reports.domainlayer.usecases.get_recently_reports import MultipleReportOutputBoundary
 
 
 class MultipleReportsPresenter(MultipleReportOutputBoundary):
